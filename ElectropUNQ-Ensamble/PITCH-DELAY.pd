@@ -1,0 +1,168 @@
+#N canvas 0 22 940 651 10;
+#X floatatom 34 456 5 1 5000 0 - - -, f 5;
+#X floatatom 202 584 5 0 200 0 - - -, f 5;
+#X floatatom 34 584 5 0 100 0 - - -, f 5;
+#X msg 34 474 time \$1;
+#X msg 202 602 feedback \$1;
+#X msg 384 612 octave \$1;
+#X msg 34 602 loopDepth \$1;
+#X msg 202 498 pitchFactor \$1;
+#X obj 111 177 hsl 128 15 0 34 0 0 empty \$0-pit_pitfact empty -2 -8
+0 10 -228856 -1 -1 0 1;
+#X obj 111 136 hsl 128 15 1 5000 1 0 empty \$0-pit_time empty -2 -8
+0 10 -228856 -1 -1 3813 1;
+#X text 6 15 +pitchdelay~;
+#X obj 160 335 hsl 128 15 0 100 0 0 empty pit_dryvol empty -2 -8 0
+10 -228856 -1 -1 10795 1;
+#X obj 161 372 hsl 128 15 0 100 0 0 empty pit_delvol empty -2 -8 0
+10 -228856 -1 -1 10795 1;
+#X text 159 316 Dry Volume (dB);
+#X text 161 352 Delay Volume (dB);
+#X floatatom 384 455 5 0 0 0 - - pitch_dryvolume, f 5;
+#X floatatom 384 515 5 0 0 0 - - pitch_delvolume, f 5;
+#N canvas 154 27 514 538 control 0;
+#X text 15 45 time - the delay time. Since the pitch-shifting effect
+is based on modulating the delay time \, it has a higher fidelity when
+the delay time is higher.;
+#X text 13 259 loop depth - this controls the amount of delay line
+which is used for pitch-shifting.;
+#X text 9 301 Dry/Delay volume-controls the volume of the original
+signal (dry) or the delayed signal (delay);
+#X text 13 139 feedback - the same feedback with saturation from +delay~.
+This allows interesting effects like a circle of fifths delay.;
+#X text 16 104 pitch shift - this knob selects ratios and equal tempered
+;
+#X text 14 198 octave - the control adds or subtracts a number of octaves
+to or from the pitch shift value. It varies from -3 to 3 \, and at
+extremes will give very distorted pitch-shifting.;
+#X text 19 14 +pitchdelay~;
+#X text 6 357 Mix-controls the ratio of dry-delay in the output. Ranges
+from 0 to 100% (0% all dry \, 100% all delay). Adjust mix \, then adjust
+volumes as desired.;
+#X text 7 412 Pitch Factor- This controls by how much the pitch is
+shifted. The controls have equal tempered intervals (minor second major
+second etc) with just intonation ratios in between.;
+#X restore 523 45 pd control details;
+#X obj 113 262 hsl 128 15 0 200 0 0 empty \$0-pit_fb empty -2 -8 0
+10 -228856 -1 -1 0 1;
+#X obj 112 214 hsl 128 15 10 100 0 0 empty \$0-pit_lpdepth empty -2
+-8 0 10 -228856 -1 -1 2117 1;
+#X obj 202 455 int;
+#X symbolatom 108 160 12 0 0 0 - label -, f 12;
+#N canvas 624 151 656 333 label 0;
+#X obj 117 188 list;
+#X obj 117 209 list split 1;
+#X obj 77 83 t b f f b;
+#X obj 117 238 list split 1;
+#X obj 77 63 + 1;
+#X obj 238 220 - 1;
+#X obj 77 35 inlet;
+#X obj 163 264 s label;
+#X msg 146 106 Unison Minor_2nd 16/15 10/9 Major_2nd 9/8 8/7 7/6 Minor_3rd
+6/5 5/4 Major_3rd 9/7 4/3 Perfect_4th 7/5 Tritone 10/7 Perfect_5th
+3/2 14/9 11/7 Minor_6th 8/5 5/3 Major_6th 12/7 7/4 16/9 Minor_7th 9/5
+13/7 15/8 Major_7th Octave;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 2 0 0 0;
+#X connect 2 1 1 1;
+#X connect 2 2 5 0;
+#X connect 2 3 8 0;
+#X connect 3 1 7 0;
+#X connect 4 0 2 0;
+#X connect 5 0 3 1;
+#X connect 6 0 4 0;
+#X connect 8 0 0 1;
+#X restore 214 476 pd label;
+#X obj 8 37 cnv 15 500 60 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 556 311 +pitchdelay~;
+#X text 16 48 The +pitchdelay~ object is similar to the +delay~ object
+with an emphasis on pitch-shifting.;
+#X obj 111 297 hradio 15 1 0 7 empty \$0-octave-set octave 0 -8 0 10
+-262144 -1 -1 3;
+#X obj 384 588 - 3;
+#X obj 641 173 inlet~;
+#X obj 626 419 line~;
+#X obj 530 392 *~;
+#X obj 666 364 route 1;
+#X msg 672 388 1 200;
+#X msg 713 389 0 200;
+#X obj 109 356 tgl 30 0 empty empty empty 17 7 0 10 -232576 -1 -1 1
+1;
+#X obj 498 434 throw~ PITCHDELAY;
+#X text 106 118 Time 0 - 5000 ms (log);
+#X text 107 196 loop Depth 10 - 100%;
+#X text 108 244 Feed Back 0 - 200%;
+#X obj 367 260 loadbang;
+#X msg 389 311 1;
+#X obj 34 495 s \$0-pitchdel;
+#X obj 585 264 r \$0-pitchdel;
+#X obj 34 623 s \$0-pitchdel;
+#X obj 202 623 s \$0-pitchdel;
+#X obj 384 633 s \$0-pitchdel;
+#X obj 202 519 s \$0-pitchdel;
+#N canvas 351 72 450 447 init 0;
+#X msg 77 302 12.9;
+#X msg 137 209 0;
+#X msg 193 173 25;
+#X msg 253 118 85;
+#X msg 38 359 \; pd dsp 1 \;;
+#X obj 38 -18 loadbang;
+#X obj 38 5 t b b b b b b;
+#X msg 306 82 3;
+#X obj 306 105 s \$0-octave-set;
+#X obj 253 143 s \$0-pit_dryvol;
+#X obj 253 167 s \$0-pit_delvol;
+#X obj 193 199 s \$0-pit_lpdepth;
+#X obj 137 234 s \$0-pit_oct;
+#X obj 137 256 s \$0-pit_fb;
+#X obj 137 287 s \$0-pit_pitfact;
+#X obj 77 325 s \$0-pit_time;
+#X connect 0 0 15 0;
+#X connect 1 0 12 0;
+#X connect 1 0 13 0;
+#X connect 1 0 14 0;
+#X connect 2 0 11 0;
+#X connect 3 0 9 0;
+#X connect 3 0 10 0;
+#X connect 5 0 6 0;
+#X connect 6 0 4 0;
+#X connect 6 1 0 0;
+#X connect 6 2 1 0;
+#X connect 6 3 2 0;
+#X connect 6 4 3 0;
+#X connect 6 5 7 0;
+#X connect 7 0 8 0;
+#X restore 523 69 pd init;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 2 0 6 0;
+#X connect 3 0 41 0;
+#X connect 4 0 44 0;
+#X connect 5 0 45 0;
+#X connect 6 0 43 0;
+#X connect 7 0 46 0;
+#X connect 8 0 20 0;
+#X connect 9 0 0 0;
+#X connect 11 0 15 0;
+#X connect 12 0 16 0;
+#X connect 18 0 1 0;
+#X connect 19 0 2 0;
+#X connect 20 0 7 0;
+#X connect 20 0 22 0;
+#X connect 24 0 30 0;
+#X connect 26 0 27 0;
+#X connect 27 0 5 0;
+#X connect 28 0 24 0;
+#X connect 29 0 30 1;
+#X connect 30 0 35 0;
+#X connect 31 0 32 0;
+#X connect 31 1 33 0;
+#X connect 32 0 29 0;
+#X connect 33 0 29 0;
+#X connect 34 0 31 0;
+#X connect 39 0 40 0;
+#X connect 40 0 34 0;
+#X connect 42 0 24 0;
+#X coords 0 -1 1 1 200 300 1 100 100;

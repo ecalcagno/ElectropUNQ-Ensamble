@@ -1,0 +1,298 @@
+#N canvas 193 240 1004 649 10;
+#X obj 104 127 vsl 30 70 0 1 0 0 empty empty CH1 0 -9 0 10 -4034 -1
+-1 0 1;
+#X obj 138 127 vsl 30 70 0 1 0 0 empty empty CH2 0 -9 0 10 -4034 -1
+-1 0 1;
+#X obj 171 127 vsl 30 70 0 1 0 0 empty empty CH3 0 -9 0 10 -4034 -1
+-1 0 1;
+#X obj 205 127 vsl 30 70 0 1 0 0 empty empty CH4 0 -9 0 10 -4034 -1
+-1 0 1;
+#X obj 239 127 vsl 30 70 0 1 0 0 empty empty CH5 0 -9 0 10 -4034 -1
+-1 0 1;
+#X obj 273 127 vsl 30 70 0 1 0 0 empty empty CH6 0 -9 0 10 -4034 -1
+-1 0 1;
+#X obj 306 127 vsl 30 70 0 1 0 0 empty empty CH7 0 -9 0 10 -4034 -1
+-1 0 1;
+#X obj 340 127 vsl 30 70 0 1 0 0 empty empty CH8 0 -9 0 10 -4034 -1
+-1 0 1;
+#X obj 110 206 tgl 20 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 142 206 tgl 20 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 176 205 tgl 20 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 210 205 tgl 20 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 244 205 tgl 20 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 276 205 tgl 20 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 310 204 tgl 20 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 344 204 tgl 20 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#N canvas 0 23 834 614 CH1 0;
+#X obj 9 149 adc~ 1;
+#X obj 53 334 throw~ CH1;
+#X obj 34 268 throw~ CH1-PROC;
+#X msg 117 194 \$1 200;
+#X obj 114 225 line~;
+#X obj 71 242 *~;
+#X obj 134 312 line~;
+#X obj 73 314 *~;
+#X obj 167 238 route 1;
+#X msg 135 283 1 200;
+#X msg 214 263 0 200;
+#X obj 141 122 inlet;
+#X obj 182 185 inlet;
+#X connect 0 0 5 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 1;
+#X connect 5 0 7 0;
+#X connect 5 0 2 0;
+#X connect 6 0 7 1;
+#X connect 7 0 1 0;
+#X connect 8 0 9 0;
+#X connect 8 1 10 0;
+#X connect 9 0 6 0;
+#X connect 10 0 6 0;
+#X connect 11 0 3 0;
+#X connect 12 0 8 0;
+#X restore 124 469 pd CH1;
+#N canvas 0 23 834 614 CH2 0;
+#X msg 117 194 \$1 200;
+#X obj 114 225 line~;
+#X obj 71 242 *~;
+#X obj 134 312 line~;
+#X obj 73 314 *~;
+#X obj 167 238 route 1;
+#X msg 135 283 1 200;
+#X msg 214 263 0 200;
+#X obj 141 122 inlet;
+#X obj 182 185 inlet;
+#X obj 53 334 throw~ CH2;
+#X obj 34 268 throw~ CH2-PROC;
+#X obj 72 168 adc~ 2;
+#X connect 0 0 1 0;
+#X connect 1 0 2 1;
+#X connect 2 0 4 0;
+#X connect 2 0 11 0;
+#X connect 3 0 4 1;
+#X connect 4 0 10 0;
+#X connect 5 0 6 0;
+#X connect 5 1 7 0;
+#X connect 6 0 3 0;
+#X connect 7 0 3 0;
+#X connect 8 0 0 0;
+#X connect 9 0 5 0;
+#X connect 12 0 2 0;
+#X restore 182 469 pd CH2;
+#N canvas 0 23 834 614 CH3 0;
+#X msg 117 194 \$1 200;
+#X obj 114 225 line~;
+#X obj 71 242 *~;
+#X obj 134 312 line~;
+#X obj 73 314 *~;
+#X obj 167 238 route 1;
+#X msg 135 283 1 200;
+#X msg 214 263 0 200;
+#X obj 141 122 inlet;
+#X obj 182 185 inlet;
+#X obj 72 168 adc~ 3;
+#X obj 34 268 throw~ CH3-PROC;
+#X obj 53 334 throw~ CH3;
+#X connect 0 0 1 0;
+#X connect 1 0 2 1;
+#X connect 2 0 4 0;
+#X connect 2 0 11 0;
+#X connect 3 0 4 1;
+#X connect 4 0 12 0;
+#X connect 5 0 6 0;
+#X connect 5 1 7 0;
+#X connect 6 0 3 0;
+#X connect 7 0 3 0;
+#X connect 8 0 0 0;
+#X connect 9 0 5 0;
+#X connect 10 0 2 0;
+#X restore 238 469 pd CH3;
+#N canvas 0 23 834 614 CH4 0;
+#X msg 117 194 \$1 200;
+#X obj 114 225 line~;
+#X obj 71 242 *~;
+#X obj 134 312 line~;
+#X obj 73 314 *~;
+#X obj 167 238 route 1;
+#X msg 135 283 1 200;
+#X msg 214 263 0 200;
+#X obj 141 122 inlet;
+#X obj 182 185 inlet;
+#X obj 72 168 adc~ 4;
+#X obj 34 268 throw~ CH4-PROC;
+#X obj 53 334 throw~ CH4;
+#X connect 0 0 1 0;
+#X connect 1 0 2 1;
+#X connect 2 0 4 0;
+#X connect 2 0 11 0;
+#X connect 3 0 4 1;
+#X connect 4 0 12 0;
+#X connect 5 0 6 0;
+#X connect 5 1 7 0;
+#X connect 6 0 3 0;
+#X connect 7 0 3 0;
+#X connect 8 0 0 0;
+#X connect 9 0 5 0;
+#X connect 10 0 2 0;
+#X restore 296 469 pd CH4;
+#N canvas 0 23 834 614 CH5 0;
+#X msg 117 194 \$1 200;
+#X obj 114 225 line~;
+#X obj 71 242 *~;
+#X obj 134 312 line~;
+#X obj 73 314 *~;
+#X obj 167 238 route 1;
+#X msg 135 283 1 200;
+#X msg 214 263 0 200;
+#X obj 141 122 inlet;
+#X obj 182 185 inlet;
+#X obj 72 168 adc~ 5;
+#X obj 34 268 throw~ CH5-PROC;
+#X obj 53 334 throw~ CH5;
+#X connect 0 0 1 0;
+#X connect 1 0 2 1;
+#X connect 2 0 4 0;
+#X connect 2 0 11 0;
+#X connect 3 0 4 1;
+#X connect 4 0 12 0;
+#X connect 5 0 6 0;
+#X connect 5 1 7 0;
+#X connect 6 0 3 0;
+#X connect 7 0 3 0;
+#X connect 8 0 0 0;
+#X connect 9 0 5 0;
+#X connect 10 0 2 0;
+#X restore 347 468 pd CH5;
+#N canvas 0 23 834 614 CH6 0;
+#X msg 117 194 \$1 200;
+#X obj 114 225 line~;
+#X obj 71 242 *~;
+#X obj 134 312 line~;
+#X obj 73 314 *~;
+#X obj 167 238 route 1;
+#X msg 135 283 1 200;
+#X msg 214 263 0 200;
+#X obj 141 122 inlet;
+#X obj 182 185 inlet;
+#X obj 72 168 adc~ 6;
+#X obj 34 268 throw~ CH6-PROC;
+#X obj 53 334 throw~ CH6;
+#X connect 0 0 1 0;
+#X connect 1 0 2 1;
+#X connect 2 0 4 0;
+#X connect 2 0 11 0;
+#X connect 3 0 4 1;
+#X connect 4 0 12 0;
+#X connect 5 0 6 0;
+#X connect 5 1 7 0;
+#X connect 6 0 3 0;
+#X connect 7 0 3 0;
+#X connect 8 0 0 0;
+#X connect 9 0 5 0;
+#X connect 10 0 2 0;
+#X restore 405 468 pd CH6;
+#N canvas 0 23 834 614 CH7 0;
+#X msg 117 194 \$1 200;
+#X obj 114 225 line~;
+#X obj 71 242 *~;
+#X obj 134 312 line~;
+#X obj 73 314 *~;
+#X obj 167 238 route 1;
+#X msg 135 283 1 200;
+#X msg 214 263 0 200;
+#X obj 141 122 inlet;
+#X obj 182 185 inlet;
+#X obj 72 168 adc~ 7;
+#X obj 34 268 throw~ CH7-PROC;
+#X obj 53 334 throw~ CH7;
+#X connect 0 0 1 0;
+#X connect 1 0 2 1;
+#X connect 2 0 4 0;
+#X connect 2 0 11 0;
+#X connect 3 0 4 1;
+#X connect 4 0 12 0;
+#X connect 5 0 6 0;
+#X connect 5 1 7 0;
+#X connect 6 0 3 0;
+#X connect 7 0 3 0;
+#X connect 8 0 0 0;
+#X connect 9 0 5 0;
+#X connect 10 0 2 0;
+#X restore 461 468 pd CH7;
+#N canvas 0 23 834 614 CH8 0;
+#X msg 117 194 \$1 200;
+#X obj 114 225 line~;
+#X obj 71 242 *~;
+#X obj 134 312 line~;
+#X obj 73 314 *~;
+#X obj 167 238 route 1;
+#X msg 135 283 1 200;
+#X msg 214 263 0 200;
+#X obj 141 122 inlet;
+#X obj 182 185 inlet;
+#X obj 72 168 adc~ 8;
+#X obj 34 268 throw~ CH8-PROC;
+#X obj 53 334 throw~ CH8;
+#X connect 0 0 1 0;
+#X connect 1 0 2 1;
+#X connect 2 0 4 0;
+#X connect 2 0 11 0;
+#X connect 3 0 4 1;
+#X connect 4 0 12 0;
+#X connect 5 0 6 0;
+#X connect 5 1 7 0;
+#X connect 6 0 3 0;
+#X connect 7 0 3 0;
+#X connect 8 0 0 0;
+#X connect 9 0 5 0;
+#X connect 10 0 2 0;
+#X restore 519 468 pd CH8;
+#X obj 728 289 vsl 30 70 0 1 0 0 vol_sinte1 empty SINTE_1 0 -9 0 10
+-260097 -1 -1 0 1;
+#X obj 732 366 tgl 20 0 on-off_sinte1 empty empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 775 289 vsl 30 70 0 1 0 0 vol_sinte2 empty SINTE_2 0 -9 0 10
+-260097 -1 -1 0 1;
+#X obj 779 366 tgl 20 0 on-off_sinte2 empty empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 825 289 vsl 30 70 0 1 0 0 vol_seq empty SEQ 0 -9 0 10 -260097
+-1 -1 0 1;
+#X obj 829 366 tgl 20 0 on-off_seq empty empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 379 128 vsl 30 70 0 1 0 0 vol_player1 empty PLAYER_1 0 -9 0
+10 -232576 -1 -1 0 1;
+#X obj 383 205 tgl 20 0 on-off_player1 empty empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 431 128 vsl 30 70 0 1 0 0 vol_player2 empty PLAYER_2 0 -9 0
+10 -232576 -1 -1 0 1;
+#X obj 435 205 tgl 20 0 on-off_player2 empty empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 485 128 vsl 30 70 0 1 0 0 vol_player3 empty PLAYER_3 0 -9 0
+10 -232576 -1 -1 0 1;
+#X obj 489 205 tgl 20 0 on-off_player3 empty empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X connect 0 0 16 0;
+#X connect 1 0 17 0;
+#X connect 2 0 18 0;
+#X connect 3 0 19 0;
+#X connect 4 0 20 0;
+#X connect 5 0 21 0;
+#X connect 6 0 22 0;
+#X connect 7 0 23 0;
+#X connect 8 0 16 1;
+#X connect 9 0 17 1;
+#X connect 10 0 18 1;
+#X connect 11 0 19 1;
+#X connect 12 0 20 1;
+#X connect 13 0 21 1;
+#X connect 14 0 22 1;
+#X connect 15 0 23 1;
+#X coords 0 -1 1 1 450 150 2 100 100;
